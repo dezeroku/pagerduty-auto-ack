@@ -65,7 +65,7 @@ def main():
 
                 pd.acknowledge_incidents(pd_client, incident_ids)
 
-                logger.debug(f"Incidents acknowledged: {len(incident_ids)}")
+                logger.info(f"Incidents acknowledged: {len(incident_ids)}")
                 logger.debug(f"Sleeping for {args.interval} seconds")
                 time.sleep(args.interval)
 
