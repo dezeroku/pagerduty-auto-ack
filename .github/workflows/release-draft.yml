@@ -1,0 +1,53 @@
+---
+name: Draft the Release
+
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout build repo
+        uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: "1.7.1"
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-root
+      - name: Build the package
+        run: poetry build
+      - name: Upload the artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  gh_release_draft:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download the artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Create a Github Release draft
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{github.ref_name}}
+          draft: true
+          fail_on_unmatched_files: true
+          body: |
+            This is the release of tag ${{github.ref_name}}
+          files: |
+            dist/*
