@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pagerduty-auto-ack"
+version = "0.1.0"
+description = "Automatic acks for the PagerDuty incidents"
+authors = ["dezeroku <dezeroku@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pdpyras = "^5.1.3"
+
+[tool.poetry.scripts]
+pagerduty-auto-ack = "pagerduty_auto_ack.cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
