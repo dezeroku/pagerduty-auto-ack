@@ -2,8 +2,9 @@
 
 Sometimes you can not acknowledge an incident manually, but you also can not really respond to it.
 These are (and should be when you are on-call) usually short moments, taking about 15-20 minutes.
-A good example here is taking a bath.
-In such cases you may want to automatically acknowledge the incidents, to prevent loud notifications or calls.
+A good example here is taking a shower.
+In such cases you may want to automatically acknowledge the incidents, to prevent loud notifications or calls from
+disturbing other people.
 
 This script monitors the incidents that are assigned to you and acks them if needed.
 At the end of execution (when stopped with C^c) it displays the incidents that it acknowledged.
