@@ -3,6 +3,8 @@ name = "pagerduty-auto-ack"
 version = "0.1.0"
 description = "Automatic acks for the PagerDuty incidents"
 authors = ["dezeroku <dezeroku@gmail.com>"]
+repository = "https://github.com/dezeroku/pagerduty-auto-ack"
+license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
